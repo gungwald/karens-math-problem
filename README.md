@@ -21,4 +21,4 @@ It requires a Command Prompt for the output. You have to run it in a Command Pro
 cscript karens-math-problem.js
 </code>
 
-Or you can double-click karens-math-problem.bat, which does the same thing.
+Or you can run double-click-this-to-start.bat, which does the same thing.

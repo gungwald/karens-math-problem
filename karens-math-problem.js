@@ -8,7 +8,7 @@
 //
 // cscript karens-math-problem.js
 //
-// Or just double-click karens-math-problem.bat
+// Or just run double-click-this-to-start.bat
 //
 // TO DO: Rename the variables so that they represent what they are.
 
@@ -97,7 +97,7 @@ function calc(p, a) {
 				WScript.Stdout.WriteLine("solution=" + solutionCount + " iteration=" + iter + " values=" + b.toString() + " result=" + r);
 			}
 			catch (e) {
-				WScript.Echo("This program only runs with cscript in a Command Prompt. Double-click the karens-math-problem.bat file to run it this way.");
+				WScript.Echo("This program only runs with cscript in a Command Prompt. Run the double-click-this-to-start.bat file to run it this way.");
 				WScript.Quit(0);
 			}
 		}

@@ -4,13 +4,11 @@
 // Finds solutions to the following equation:
 // b0 + 13 *  b1 /  b2 + b3 + 12 * b4 - b5 - 11 + b6 * b7 / b8 - 10 = 66
 //
-// Run at a Command Prompt with this command: 
+// On Windows, run at a Command Prompt with this command: 
 //
 // cscript karens-math-problem.js
 //
-// Or just run double-click-this-to-start.bat
-//
-// TO DO: Rename the variables so that they represent what they are.
+// TODO: Rename the variables so that they represent what they are.
 
 /**
  * Set of all possible input values. Ordering is irrelevant.
@@ -33,6 +31,36 @@ var iter = 0;
  * Keeps track of the number of solutions found.
  */
 var solutionCount = 0;
+
+/**
+ * A platform-independent method of writing a line of text to standard output.
+ * 
+ * @param {String} message  What you want to write to standard output.
+ */
+function writeln(message) {
+    if (typeof print == 'function') {
+        // On Linux, gjs and rhino have the 'print' function.
+        print(message);
+    }
+    else if (typeof console === 'object') {
+        // Web browsers and Node.js have 'console.log' function.
+        console.log(message);
+    }
+    else {
+        // On Windows, cscript does not have a 'print' function,
+        // It uses WScript.Stdout.WriteLine instead but only if
+        // run from cscript. The wscript command does not have
+        // the Stdout object, only WScript.Echo which displays
+        // a window for each message that you have to click.
+        try {
+            WScript.Stdout.WriteLine(message);
+        }
+        catch (e) {
+            WScript.Echo("This program only runs with cscript in a Command Prompt. Try running 'cscript <program-name>.js in a Command Prompt.");
+            WScript.Quit(0);
+        }
+    }
+}
 
 /**
  * Rotates all the values of an array from left to right, wrapping
@@ -93,13 +121,7 @@ function calc(p, a) {
 		iter++;
 		if (r == 66) {
 			solutionCount++;
-			try {
-				WScript.Stdout.WriteLine("solution=" + solutionCount + " iteration=" + iter + " values=" + b.toString() + " result=" + r);
-			}
-			catch (e) {
-				WScript.Echo("This program only runs with cscript in a Command Prompt. Run the double-click-this-to-start.bat file to run it this way.");
-				WScript.Quit(0);
-			}
+			writeln("solution=" + solutionCount + " iteration=" + iter + " values=" + b.toString() + " result=" + r);
 		}
 	}
 	else {

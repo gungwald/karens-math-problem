@@ -17,7 +17,7 @@ var a = [1,2,3,4,5,6,7,8,9];
 
 /**
  * Stores all the inputs for each individual solution attempt.
- * The ordering corresponds to the order of order of variables
+ * The ordering corresponds to the order of variables
  * in the problem statement.
  */
 var b = [0,0,0,0,0,0,0,0,0];
@@ -66,6 +66,8 @@ function writeln(message) {
  * Rotates all the values of an array from left to right, wrapping
  * the last element back to the beginning. This is needed so that
  * all initial orderings of the input values can be tried.
+ * 
+ * @param {Array} x	The array to rotate
  */
 function rotate(x) {
 	var first = x[0];
